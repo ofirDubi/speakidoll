@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout tools:ignore="MergeRootFrame" tools:context=".MainActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/container"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="90dp"
+        android:layout_marginTop="58dp"
+        android:weightSum="1"
+        android:id="@+id/radioSentenceGroup" >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Desk"
+            android:id="@+id/deskButton"
+
+            android:checked="false"
+            android:textSize="25dp"
+            android:layout_weight="0.13" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:text="Chair"
+            android:id="@+id/chairButton"
+
+            android:checked="false"
+            android:textSize="25dp" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="90dp"
+        android:weightSum="1"
+        android:id="@+id/radioLanguageGroup"
+        android:layout_below="@+id/radioSentenceGroup"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="34dp">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English"
+            android:id="@+id/English"
+
+            android:checked="false"
+            android:textSize="25dp"
+            android:layout_weight="0.13" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:text="Japanese"
+            android:id="@+id/Japanese"
+
+            android:checked="false"
+            android:textSize="25dp" />
+
+    </RadioGroup>
+
+    <Button
+        android:text="Change Language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/changeLnaguageButton"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/radioLanguageGroup"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
