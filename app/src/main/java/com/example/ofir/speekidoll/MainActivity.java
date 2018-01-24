@@ -25,10 +25,11 @@ import android.os.Build;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    TextToSpeech t1;
-    NfcAdapter nfcAdapter;
-    RadioGroup radioSentenceGroup;
-    RadioGroup radioLanguageGroup;
+    private TextToSpeech t1;
+    private NfcAdapter nfcAdapter;
+    private RadioGroup radioSentenceGroup;
+    private RadioGroup radioLanguageGroup;
+    private boolean isJapanese = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 String newLang =  selectedSentence.getText().toString().toUpperCase();
                 Log.d("changing language", "***********changing language to: " + newLang);
 
-                int result=t1.setLanguage(newLang.equals("Japanese") ? Locale.JAPANESE : Locale.ENGLISH );
+                int result=t1.setLanguage(newLang.equals("JAPANESE") ? Locale.JAPAN : Locale.US );
+                isJapanese = newLang.equals("JAPANESE");
                 if(result==TextToSpeech.LANG_MISSING_DATA ||
                         result==TextToSpeech.LANG_NOT_SUPPORTED){
                     Log.e("error", "This Language is not supported");
@@ -111,7 +113,19 @@ public class MainActivity extends AppCompatActivity {
         int selectedId=radioSentenceGroup.getCheckedRadioButtonId();
         RadioButton selectedSentence =(RadioButton)findViewById(selectedId);
         String text = selectedSentence.getText().toString();
-        Toast.makeText(this, "NFc intent received!", Toast.LENGTH_LONG).show();
+        if(text ==null){
+            text = "";
+        }
+        Log.d("****going to talk ***", "String is: "+text);
+        Toast.makeText(this, "NFc intent received! - "+text, Toast.LENGTH_LONG).show();
+        if(isJapanese){
+            if(text.equals("Chair")){
+                text = "Isu";
+            }
+            if(text.equals("Desk")){
+                text = "Tsukue";
+            }
+        }
         t1.speak(text, TextToSpeech.QUEUE_FLUSH, null);
         Toast.makeText(this, "talked", Toast.LENGTH_LONG).show();
         if (intent != null && NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
