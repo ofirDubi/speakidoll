@@ -11,6 +11,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.ofir.speekidoll.SyncDollActivity"
-    tools:showIn="@layout/activity_sync_doll">
+    tools:showIn="@layout/activity_sync_doll"
+    android:weightSum="2">
+
+    <ListView
+        android:id="@+id/bt_devices"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1">
+    </ListView>
+
+    <Button
+        android:text="choose the doll device"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sync_doll_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="SyncDoll"/>
 
 </RelativeLayout>
